@@ -8,6 +8,7 @@ const links = [
   { to: '/unidades', label: 'Unidades' },
 ]
 
+
 export default function Navbar() {
   const [open, setOpen] = useState(false)
 
@@ -15,10 +16,24 @@ export default function Navbar() {
     <header className="navbar">
       <div className="container navbar-inner">
         <NavLink to="/" className="brand" onClick={() => setOpen(false)}>
-          <span className="brand-name">Quelvya</span>
+          <img src="/logoNavBar.png" alt="Quelvya" className="brand-img" />
         </NavLink>
 
+        {/* Overlay escuro para fechar menu mobile */}
+        {open && (
+          <div
+            className="nav-overlay"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+
         <nav className={`nav-links ${open ? 'is-open' : ''}`}>
+          {/* Logo dentro do menu mobile */}
+          <div className="nav-mobile-brand">
+            <img src="/logoNavBar.png" alt="Quelvya" className="brand-img" />
+          </div>
+
           {links.map((l) => (
             <NavLink
               key={l.to}
@@ -35,8 +50,8 @@ export default function Navbar() {
         </nav>
 
         <button
-          className="nav-toggle"
-          aria-label="Abrir menu"
+          className={`nav-toggle ${open ? 'is-open' : ''}`}
+          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
           aria-expanded={open}
           onClick={() => setOpen((o) => !o)}
         >

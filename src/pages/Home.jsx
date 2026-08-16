@@ -20,12 +20,6 @@ const pillars = [
   },
 ]
 
-const steps = [
-  { n: '01', title: 'Diagnóstico', text: 'Visita técnica e levantamento de não conformidades no processo atual.' },
-  { n: '02', title: 'Adequação', text: 'Plano de ação com prazos, responsáveis e prioridades sanitárias.' },
-  { n: '03', title: 'Acompanhamento', text: 'Auditorias periódicas para manter o padrão ao longo do tempo.' },
-  { n: '04', title: 'Certificação', text: 'Relatórios e documentação prontos para fiscalização e certificações.' },
-]
 
 export default function Home() {
   return (
@@ -69,20 +63,37 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-deep">
-        <div className="container">
-          <div className="section-head">
-            <p className="eyebrow" style={{ color: 'var(--gold-light)' }}>Como trabalhamos</p>
-            <h2>Um processo pensado para a rotina de quem fiscaliza e prepara alimentos</h2>
+      <section className="how-we-work-section">
+        <div className="how-we-work-split">
+          {/* Lado esquerdo: texto verde */}
+          <div className="how-we-work-left">
+            <div className="how-we-work-content">
+              <p className="eyebrow" style={{ color: 'var(--gold-light)' }}>Como trabalhamos</p>
+              <h2>Um processo pensado para a rotina de quem fiscaliza e prepara alimentos</h2>
+              <p className="how-we-work-body">
+                Nosso trabalho começa com um diagnóstico completo, realizado por meio de visita técnica
+                e levantamento das não conformidades presentes no processo atual. A partir dessa análise,
+                desenvolvemos um plano de ação personalizado, com definição de prazos, responsáveis e
+                prioridades sanitárias.
+              </p>
+              <p className="how-we-work-body">
+                Na sequência, acompanhamos a implementação das melhorias por meio de auditorias periódicas,
+                garantindo que os padrões sejam mantidos ao longo do tempo. Ao final, organizamos relatórios
+                e toda a documentação necessária para facilitar processos de fiscalização e apoiar a empresa
+                na busca por certificações.
+              </p>
+            </div>
           </div>
-          <div className="grid steps-grid">
-            {steps.map((s) => (
-              <div className="step-card" key={s.n}>
-                <span className="step-number">{s.n}</span>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
-              </div>
-            ))}
+
+          {/* Lado direito: imagem full-height */}
+          <div className="how-we-work-right">
+            <img
+              src="/como-trabalhamos.jpg"
+              alt="Prato saudável em formato de coração com legumes e proteínas, rodeado de halteres"
+              className="how-we-work-photo"
+            />
+            {/* Fade da esquerda sobre a imagem */}
+            <div className="how-we-work-fade" aria-hidden="true" />
           </div>
         </div>
       </section>
