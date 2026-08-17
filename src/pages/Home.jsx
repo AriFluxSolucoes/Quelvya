@@ -1,5 +1,9 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Seal from '../components/Seal'
+import TeamCard from '../components/TeamCard'
+import ContactSection from '../components/ContactSection'
+import { team } from '../data/team'
 
 const pillars = [
   {
@@ -22,6 +26,23 @@ const pillars = [
 
 
 export default function Home() {
+  useEffect(() => {
+    if (window.location.hash === '#contato') {
+      const el = document.getElementById('contato')
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100)
+      }
+    }
+  }, [])
+
+  const scrollToContact = (e) => {
+    e.preventDefault()
+    const el = document.getElementById('contato')
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <>
       <section className="hero">
@@ -34,7 +55,7 @@ export default function Home() {
               conformidade sanitária e nutrição — para que a qualidade não dependa da sorte.
             </p>
             <div className="hero-actions">
-              <Link to="/contato" className="btn btn-primary">Agendar diagnóstico</Link>
+              <a href="#contato" onClick={scrollToContact} className="btn btn-primary">Agendar diagnóstico</a>
               <Link to="/servicos" className="btn btn-outline">Conhecer os serviços</Link>
             </div>
           </div>
@@ -99,18 +120,24 @@ export default function Home() {
       </section>
 
       <section className="section-alt">
-        <div className="container cta-band">
-          <div>
+        <div className="container">
+          <div className="section-head">
             <p className="eyebrow">Equipe</p>
             <h2>Profissionais que assinam pelo que entregam</h2>
-            <p className="hero-lead">
+            <p>
               Conheça as nutricionistas e especialistas em segurança alimentar responsáveis pelos laudos e
               acompanhamentos da Quelvya.
             </p>
           </div>
-          <Link to="/sobre" className="btn btn-primary">Ver a equipe</Link>
+          <div className="grid team-grid">
+            {team.map((t) => (
+              <TeamCard key={t.id} member={t} />
+            ))}
+          </div>
         </div>
       </section>
+
+      <ContactSection />
     </>
   )
 }

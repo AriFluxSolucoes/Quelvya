@@ -1,11 +1,10 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Sobre from './pages/Sobre'
 import Servicos from './pages/Servicos'
 import Unidades from './pages/Unidades'
-import Contato from './pages/Contato'
 
 export default function App() {
   return (
@@ -17,7 +16,7 @@ export default function App() {
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/servicos" element={<Servicos />} />
           <Route path="/unidades" element={<Unidades />} />
-          <Route path="/contato" element={<Contato />} />
+          <Route path="/contato" element={<Navigate to="/#contato" replace />} />
         </Routes>
       </main>
       <Footer />

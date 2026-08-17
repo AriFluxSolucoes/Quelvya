@@ -1,12 +1,6 @@
 import TeamCard from '../components/TeamCard'
 import Seal from '../components/Seal'
-
-// Placeholder — substituir pelos nomes, cargos, fotos e bios reais enviados pela equipe.
-const team = [
-  { name: 'Nome da profissional', role: 'Nutricionista responsável técnica' },
-  { name: 'Nome da profissional', role: 'Especialista em Segurança Alimentar' },
-  { name: 'Nome da profissional', role: 'Consultora em Fiscalização Sanitária' },
-]
+import { team } from '../data/team'
 
 export default function Sobre() {
   return (
@@ -53,8 +47,8 @@ export default function Sobre() {
             </p>
           </div>
           <div className="grid team-grid">
-            {team.map((t, i) => (
-              <TeamCard key={i} name={t.name} role={t.role} placeholder />
+            {team.map((t) => (
+              <TeamCard key={t.id} member={t} />
             ))}
           </div>
         </div>

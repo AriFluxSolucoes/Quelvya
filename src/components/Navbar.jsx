@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 
 const links = [
   { to: '/', label: 'Início' },
@@ -8,55 +7,68 @@ const links = [
   { to: '/unidades', label: 'Unidades' },
 ]
 
-
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const handleGoHome = (e) => {
+    e.preventDefault()
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      navigate('/')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+
+  const handleFaleConosco = (e) => {
+    e.preventDefault()
+    if (location.pathname === '/') {
+      const el = document.getElementById('contato')
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+      }
+    } else {
+      navigate('/#contato')
+    }
+  }
 
   return (
     <header className="navbar">
       <div className="container navbar-inner">
-        <NavLink to="/" className="brand" onClick={() => setOpen(false)}>
+        <a href="/" className="brand" onClick={handleGoHome}>
           <img src="/logoNavBar.png" alt="Quelvya" className="brand-img" />
-        </NavLink>
+        </a>
 
-        {/* Overlay escuro para fechar menu mobile */}
-        {open && (
-          <div
-            className="nav-overlay"
-            onClick={() => setOpen(false)}
-            aria-hidden="true"
-          />
-        )}
-
-        <nav className={`nav-links ${open ? 'is-open' : ''}`}>
-          {/* Logo dentro do menu mobile */}
-          <div className="nav-mobile-brand">
-            <img src="/logoNavBar.png" alt="Quelvya" className="brand-img" />
-          </div>
-
-          {links.map((l) => (
-            <NavLink
-              key={l.to}
-              to={l.to}
-              className={({ isActive }) => 'nav-link' + (isActive ? ' is-active' : '')}
-              onClick={() => setOpen(false)}
-            >
-              {l.label}
-            </NavLink>
-          ))}
-          <NavLink to="/contato" className="btn btn-gold nav-cta" onClick={() => setOpen(false)}>
+        <nav className="nav-links">
+          {links.map((l) =>
+            l.to === '/' ? (
+              <a
+                key={l.to}
+                href="/"
+                className={`nav-link${location.pathname === '/' ? ' is-active' : ''}`}
+                onClick={handleGoHome}
+              >
+                {l.label}
+              </a>
+            ) : (
+              <NavLink
+                key={l.to}
+                to={l.to}
+                className={({ isActive }) => 'nav-link' + (isActive ? ' is-active' : '')}
+              >
+                {l.label}
+              </NavLink>
+            )
+          )}
+          <a
+            href="#contato"
+            className="btn btn-gold nav-cta"
+            onClick={handleFaleConosco}
+          >
             Fale conosco
-          </NavLink>
+          </a>
         </nav>
-
-        <button
-          className={`nav-toggle ${open ? 'is-open' : ''}`}
-          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
-          aria-expanded={open}
-          onClick={() => setOpen((o) => !o)}
-        >
-          <span /><span /><span />
-        </button>
       </div>
     </header>
   )
