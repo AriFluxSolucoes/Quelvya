@@ -111,6 +111,19 @@ img { max-width: 100%; display: block; }
 }
 .btn-outline:hover { background: var(--green-deep); color: var(--white); }
 
+.btn-whatsapp {
+  background: #25D366;
+  color: #fff;
+  border-color: transparent;
+}
+.btn-whatsapp:hover { background: #1ebe5d; }
+.btn-whatsapp:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.form-required { color: var(--gold); margin-left: 2px; }
+
 section { padding: 96px 0; }
 
 @media (max-width: 720px) {

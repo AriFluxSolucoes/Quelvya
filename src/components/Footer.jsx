@@ -1,26 +1,38 @@
-import { Link } from 'react-router-dom'
-
 export default function Footer() {
+  const scrollTo = (id) => {
+    if (id === 'inicio') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      const el = document.getElementById(id)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <footer className="footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <svg viewBox="0 0 100 100" width="30" height="30" aria-hidden="true">
-            <circle cx="50" cy="50" r="44" fill="none" stroke="var(--gold)" strokeWidth="3" strokeDasharray="2.5 7" />
-            <path d="M32 50 L45 63 L70 34" fill="none" stroke="var(--gold)" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <div>
-            <p className="footer-name">Quelvya</p>
-            <p className="footer-tag">Controle de qualidade, fiscalização e segurança alimentar.</p>
-          </div>
+          {/* Logo em versão clara para o fundo escuro */}
+          <a
+            href="/"
+            onClick={(e) => { e.preventDefault(); scrollTo('inicio') }}
+            style={{ display: 'inline-block' }}
+          >
+            <img
+              src="/logoNavBar.png"
+              alt="Quelvya"
+              className="footer-logo"
+            />
+          </a>
+          <p className="footer-tag">Controle de qualidade, fiscalização e segurança alimentar.</p>
         </div>
 
         <div className="footer-col">
           <p className="footer-heading">Navegação</p>
-          <Link to="/sobre">Sobre</Link>
-          <Link to="/servicos">Serviços</Link>
-          <Link to="/unidades">Unidades</Link>
-          <a href="/#contato">Contato</a>
+          <a href="#sobre" onClick={(e) => { e.preventDefault(); scrollTo('sobre') }}>Sobre</a>
+          <a href="#servicos" onClick={(e) => { e.preventDefault(); scrollTo('servicos') }}>Serviços</a>
+          <a href="#equipe" onClick={(e) => { e.preventDefault(); scrollTo('equipe') }}>Equipe</a>
+          <a href="#contato" onClick={(e) => { e.preventDefault(); scrollTo('contato') }}>Contato</a>
         </div>
 
         <div className="footer-col">

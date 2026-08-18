@@ -1,75 +1,145 @@
-import { NavLink, useNavigate, useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const links = [
-  { to: '/', label: 'Início' },
-  { to: '/sobre', label: 'Sobre' },
-  { to: '/servicos', label: 'Serviços' },
-  { to: '/unidades', label: 'Unidades' },
+  { id: 'inicio',   label: 'Início' },
+  { id: 'sobre',    label: 'Sobre' },
+  { id: 'servicos', label: 'Serviços' },
+  { id: 'equipe',   label: 'Equipe' },
 ]
 
 export default function Navbar() {
   const navigate = useNavigate()
   const location = useLocation()
+  const [open, setOpen] = useState(false)
 
-  const handleGoHome = (e) => {
-    e.preventDefault()
-    if (location.pathname === '/') {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    } else {
+  // Fecha o menu ao redimensionar para desktop
+  useEffect(() => {
+    const close = () => { if (window.innerWidth > 720) setOpen(false) }
+    window.addEventListener('resize', close)
+    return () => window.removeEventListener('resize', close)
+  }, [])
+
+  // Bloqueia scroll do body quando o menu está aberto
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
+  const scrollToSection = (id) => {
+    setOpen(false)
+    if (location.pathname !== '/') {
       navigate('/')
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-  }
-
-  const handleFaleConosco = (e) => {
-    e.preventDefault()
-    if (location.pathname === '/') {
-      const el = document.getElementById('contato')
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' })
-      }
+      setTimeout(() => {
+        if (id === 'inicio') {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        } else {
+          const el = document.getElementById(id)
+          if (el) el.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 120)
     } else {
-      navigate('/#contato')
+      if (id === 'inicio') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      } else {
+        const el = document.getElementById(id)
+        if (el) el.scrollIntoView({ behavior: 'smooth' })
+      }
     }
   }
 
   return (
-    <header className="navbar">
-      <div className="container navbar-inner">
-        <a href="/" className="brand" onClick={handleGoHome}>
-          <img src="/logoNavBar.png" alt="Quelvya" className="brand-img" />
-        </a>
+    <>
+      <header className="navbar">
+        <div className="container navbar-inner">
+          {/* Logo */}
+          <a
+            href="/"
+            className="brand"
+            onClick={(e) => { e.preventDefault(); scrollToSection('inicio') }}
+          >
+            <img src="/logoNavBar.png" alt="Quelvya" className="brand-img" />
+          </a>
 
-        <nav className="nav-links">
-          {links.map((l) =>
-            l.to === '/' ? (
+          {/* Links desktop */}
+          <nav className="nav-links nav-desktop">
+            {links.map((l) => (
               <a
-                key={l.to}
-                href="/"
-                className={`nav-link${location.pathname === '/' ? ' is-active' : ''}`}
-                onClick={handleGoHome}
+                key={l.id}
+                href={`#${l.id}`}
+                className="nav-link"
+                onClick={(e) => { e.preventDefault(); scrollToSection(l.id) }}
               >
                 {l.label}
               </a>
-            ) : (
-              <NavLink
-                key={l.to}
-                to={l.to}
-                className={({ isActive }) => 'nav-link' + (isActive ? ' is-active' : '')}
-              >
-                {l.label}
-              </NavLink>
-            )
-          )}
-          <a
-            href="#contato"
-            className="btn btn-gold nav-cta"
-            onClick={handleFaleConosco}
+            ))}
+            <a
+              href="#contato"
+              className="btn btn-gold nav-cta"
+              onClick={(e) => { e.preventDefault(); scrollToSection('contato') }}
+            >
+              Fale conosco
+            </a>
+          </nav>
+
+          {/* Hambúrguer — só aparece no mobile */}
+          <button
+            className={`nav-toggle${open ? ' is-open' : ''}`}
+            aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
           >
-            Fale conosco
-          </a>
+            <span /><span /><span />
+          </button>
+        </div>
+      </header>
+
+      {/* Overlay escuro */}
+      {open && (
+        <div
+          className="nav-overlay"
+          aria-hidden="true"
+          onClick={() => setOpen(false)}
+        />
+      )}
+
+      {/* Drawer lateral direito */}
+      <aside className={`nav-drawer${open ? ' is-open' : ''}`} aria-label="Menu de navegação">
+        {/* Cabeçalho do drawer */}
+        <div className="nav-drawer-header">
+          <img src="/logoNavBar.png" alt="Quelvya" className="nav-drawer-logo" />
+          <button
+            className="nav-drawer-close"
+            aria-label="Fechar menu"
+            onClick={() => setOpen(false)}
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* Links */}
+        <nav className="nav-drawer-links">
+          {links.map((l) => (
+            <a
+              key={l.id}
+              href={`#${l.id}`}
+              className="nav-drawer-link"
+              onClick={(e) => { e.preventDefault(); scrollToSection(l.id) }}
+            >
+              {l.label}
+            </a>
+          ))}
         </nav>
-      </div>
-    </header>
+
+        {/* Botão Fale conosco no final */}
+        <a
+          href="#contato"
+          className="btn btn-gold nav-drawer-cta"
+          onClick={(e) => { e.preventDefault(); scrollToSection('contato') }}
+        >
+          Fale conosco
+        </a>
+      </aside>
+    </>
   )
 }
