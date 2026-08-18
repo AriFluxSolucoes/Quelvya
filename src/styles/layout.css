@@ -685,7 +685,21 @@
   margin-bottom: 20px;
 }
 .footer-brand { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
-.footer-logo { height: 52px; width: auto; object-fit: contain; opacity: 0.92; }
+.footer-logo-link {
+  display: inline-block;
+  line-height: 1;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.footer-logo-link:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+.footer-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
 .footer-tag { font-size: 0.88rem; max-width: 280px; margin: 0; }
 .footer-heading { color: var(--gold-light); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
 .footer-col { display: flex; flex-direction: column; gap: 8px; font-size: 0.92rem; }
