@@ -832,7 +832,8 @@
 @media (max-width: 900px) {
   .hero-grid, .about-grid, .contact-grid, .mission-split { grid-template-columns: 1fr; }
   .mission-split { min-height: 0; }
-  .mission-photo-panel { height: 420px; }
+  .mission-copy-panel { order: 1; }
+  .mission-photo-panel { order: 2; height: 420px; }
   .mission-photo {
     width: 100%;
     max-width: none;
