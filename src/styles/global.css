@@ -4,12 +4,12 @@
   --green-pale: #E7EEE6;
   --gold: #C9A24B;
   --gold-light: #E4C87A;
-  --bg: #fefdfb;
-  --bg-alt: #fefdfb;
+  --bg: #fefefe;
+  --bg-alt: #fefefe;
   --ink: #16221A;
   --ink-soft: #52604F;
   --line: #DCD6C4;
-  --white: #fefdfb;
+  --white: #fefefe;
 
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Work Sans", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -18,9 +18,13 @@
   --container: 1180px;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -33,7 +37,10 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-display);
   font-weight: 500;
   line-height: 1.12;
@@ -42,15 +49,32 @@ h1, h2, h3, h4 {
   letter-spacing: -0.01em;
 }
 
-h1 { font-size: clamp(2.4rem, 4.4vw, 3.6rem); }
-h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); }
-h3 { font-size: 1.3rem; }
+h1 {
+  font-size: clamp(2.4rem, 4.4vw, 3.6rem);
+}
 
-p { margin: 0 0 1em 0; color: var(--ink-soft); }
+h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+}
 
-a { color: inherit; text-decoration: none; }
+h3 {
+  font-size: 1.3rem;
+}
 
-img { max-width: 100%; display: block; }
+p {
+  margin: 0 0 1em 0;
+  color: var(--ink-soft);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
 
 .container {
   max-width: var(--container);
@@ -97,49 +121,82 @@ img { max-width: 100%; display: block; }
   background: var(--green-deep);
   color: var(--white);
 }
-.btn-primary:hover { background: var(--green-mid); }
+
+.btn-primary:hover {
+  background: var(--green-mid);
+}
 
 .btn-gold {
   background: var(--gold);
   color: var(--green-deep);
 }
-.btn-gold:hover { background: var(--gold-light); }
+
+.btn-gold:hover {
+  background: var(--gold-light);
+}
 
 .btn-outline {
   background: transparent;
   border-color: var(--green-deep);
   color: var(--green-deep);
 }
-.btn-outline:hover { background: var(--green-deep); color: var(--white); }
+
+.btn-outline:hover {
+  background: var(--green-deep);
+  color: var(--white);
+}
 
 .btn-whatsapp {
   background: #25D366;
   color: #fff;
   border-color: transparent;
 }
-.btn-whatsapp:hover { background: #1ebe5d; }
+
+.btn-whatsapp:hover {
+  background: #1ebe5d;
+}
+
 .btn-whatsapp:disabled {
   opacity: 0.45;
   cursor: not-allowed;
 }
 
-.form-required { color: var(--gold); margin-left: 2px; }
-
-section { padding: 96px 0; }
-
-@media (max-width: 720px) {
-  section { padding: 64px 0; }
-  .container { padding: 0 20px; }
+.form-required {
+  color: var(--gold);
+  margin-left: 2px;
 }
 
-.section-alt { background: var(--bg-alt); }
+section {
+  padding: 96px 0;
+}
+
+@media (max-width: 720px) {
+  section {
+    padding: 64px 0;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+}
+
+.section-alt {
+  background: var(--bg-alt);
+}
 
 .section-deep {
   background: var(--green-deep);
   color: var(--white);
 }
-.section-deep h2, .section-deep h3 { color: var(--white); }
-.section-deep p { color: #C9D3C7; }
+
+.section-deep h2,
+.section-deep h3 {
+  color: var(--white);
+}
+
+.section-deep p {
+  color: #C9D3C7;
+}
 
 .section-head {
   max-width: 620px;
@@ -157,6 +214,12 @@ section { padding: 96px 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
-  html { scroll-behavior: auto; }
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
 }

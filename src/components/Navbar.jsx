@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 
 const links = [
-  { id: 'inicio',   label: 'Início' },
-  { id: 'sobre',    label: 'Sobre' },
+  { id: 'inicio', label: 'Início' },
+  { id: 'sobre', label: 'Sobre' },
   { id: 'servicos', label: 'Serviços' },
-  { id: 'equipe',   label: 'Equipe' },
+  { id: 'equipe', label: 'Equipe' },
 ]
 
 export default function Navbar() {
@@ -58,7 +58,7 @@ export default function Navbar() {
             className="brand"
             onClick={(e) => { e.preventDefault(); scrollToSection('inicio') }}
           >
-            <img src="/logoNavBar.png" alt="Quelvya" className="brand-img" />
+            <img src="/logo-transparent.png" alt="Quelvya" className="brand-img" />
           </a>
 
           {/* Links desktop */}

@@ -139,7 +139,7 @@ export default function Home() {
           </div>
 
           <div className="hero-visual" aria-hidden="true">
-            <img src="/hero.png" alt="Quelvya" className="hero-brand-logo" />
+            <img src="/hero.jpeg" alt="Quelvya" className="hero-brand-logo" />
           </div>
         </div>
       </section>
@@ -218,7 +218,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-{/* ── SERVIÇOS ── */}
+      {/* ── SERVIÇOS ── */}
       <section id="servicos" className="section-alt">
         <div className="container">
           <div className="section-head">
