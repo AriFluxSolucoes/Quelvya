@@ -50,14 +50,23 @@ export default function CurriculoModal({ member, onClose }) {
         </div>
 
         <div className="cv-modal-body">
-          {member.summary && (
+          {member.about && member.about.length > 0 && (
+            <div className="cv-section">
+              <h4 className="cv-section-title">Sobre Mim</h4>
+              {member.about.map((paragraph, idx) => (
+                <p className="cv-text" key={idx}>{paragraph}</p>
+              ))}
+            </div>
+          )}
+
+          {member.id !== 'elidiane-santos' && member.summary && (
             <div className="cv-section">
               <h4 className="cv-section-title">Resumo Profissional</h4>
               <p className="cv-text">{member.summary}</p>
             </div>
           )}
 
-          {member.education && member.education.length > 0 && (
+          {member.id !== 'solange-berzoti' && member.id !== 'elidiane-santos' && member.education && member.education.length > 0 && (
             <div className="cv-section">
               <h4 className="cv-section-title">Formação Acadêmica</h4>
               <div className="cv-timeline">
@@ -74,7 +83,7 @@ export default function CurriculoModal({ member, onClose }) {
             </div>
           )}
 
-          {member.experience && member.experience.length > 0 && (
+          {member.id !== 'solange-berzoti' && member.id !== 'elidiane-santos' && member.experience && member.experience.length > 0 && (
             <div className="cv-section">
               <h4 className="cv-section-title">Experiência Profissional</h4>
               <div className="cv-timeline">
@@ -92,7 +101,7 @@ export default function CurriculoModal({ member, onClose }) {
             </div>
           )}
 
-          {member.skills && member.skills.length > 0 && (
+          {member.id !== 'solange-berzoti' && member.id !== 'elidiane-santos' && member.skills && member.skills.length > 0 && (
             <div className="cv-section">
               <h4 className="cv-section-title">Qualificações &amp; Especialidades</h4>
               <div className="cv-skills-tags">

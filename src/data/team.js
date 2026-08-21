@@ -11,7 +11,15 @@ export const team = [
       location: 'São Paulo – SP',
     },
     objective: 'Nutricionista com atuação voltada para Controle de Qualidade, Auditoria Sanitária, Consultoria Alimentar e Gestão em Serviços de Alimentação.',
-    summary: 'Nutricionista formada desde 2017, com sólida experiência em consultoria alimentar, auditorias sanitárias, controle de qualidade, gestão operacional e acompanhamento de boas práticas em serviços de alimentação. Atuação em cozinhas industriais, catering, varejo alimentício e alimentação coletiva.',
+    about: [
+      'Sou nutricionista, especialista em Vigilância Sanitária, com mais de 10 anos de experiência na área de alimentação, atuando diretamente em operações de grande escala, gestão de refeitórios, controle de qualidade e segurança dos alimentos.',
+      'Minha trajetória profissional foi construída dentro da operação, o que me proporcionou uma visão ampla de todo o processo — desde o recebimento e armazenamento das matérias-primas até a produção, distribuição e consumo das refeições.',
+      'Tenho experiência como Responsável Técnica (RT) e na gestão de unidades de alimentação, incluindo acompanhamento de produção, controle de fornecedores e matérias-primas, monitoramento de processos, treinamentos de equipes e implementação de boas práticas.',
+      'Também atuo na prevenção de não conformidades e adequação sanitária, buscando identificar riscos antes que se tornem problemas e contribuindo para processos mais seguros, organizados e eficientes.',
+      'Ao longo da minha carreira, também tive a oportunidade de desenvolver e capacitar equipes, realizando treinamentos de boas práticas para centenas de colaboradores, sempre com uma abordagem prática e direcionada à realidade de cada operação.',
+      'Meu propósito é ajudar empresas do setor de alimentação a fortalecer seus processos, garantir segurança e qualidade dos alimentos e construir uma cultura de boas práticas que faça parte do dia a dia da equipe.',
+      'Mais do que adequar uma operação às exigências sanitárias, meu trabalho busca transformar processos e pessoas para alcançar uma alimentação mais segura, eficiente e de qualidade.',
+    ],
     education: [
       {
         title: 'Pós-graduação Lato Sensu em Vigilância Sanitária de Alimentos e Gestão de Pessoas',
@@ -85,6 +93,15 @@ export const team = [
     },
     objective: 'Atuação dedicada em controle de qualidade, adequação de processos sanitários, segurança alimentar e treinamentos de equipes operacionais.',
     summary: 'Nutricionista formada com pós-graduação em Vigilância Sanitária, com ampla vivência em cozinhas de grande escala, auditorias de processos e controle de qualidade integral desde o recebimento até o consumo.',
+    about: [
+      'Sou nutricionista, especialista em Vigilância Sanitária, com mais de 10 anos de experiência na área de alimentação, atuando diretamente em operações de grande escala, gestão de refeitórios, controle de qualidade e segurança dos alimentos.',
+      'Minha trajetória profissional foi construída dentro da operação, o que me proporcionou uma visão ampla de todo o processo — desde o recebimento e armazenamento das matérias-primas até a produção, distribuição e consumo das refeições.',
+      'Tenho experiência como Responsável Técnica (RT) e na gestão de unidades de alimentação, incluindo acompanhamento de produção, controle de fornecedores e matérias-primas, monitoramento de processos, treinamentos de equipes e implementação de boas práticas.',
+      'Também atuo na prevenção de não conformidades e adequação sanitária, buscando identificar riscos antes que se tornem problemas e contribuindo para processos mais seguros, organizados e eficientes.',
+      'Ao longo da minha carreira, também tive a oportunidade de desenvolver e capacitar equipes, realizando treinamentos de boas práticas para centenas de colaboradores, sempre com uma abordagem prática e direcionada à realidade de cada operação.',
+      'Meu propósito é ajudar empresas do setor de alimentação a fortalecer seus processos, garantir segurança e qualidade dos alimentos e construir uma cultura de boas práticas que faça parte do dia a dia da equipe.',
+      'Mais do que adequar uma operação às exigências sanitárias, meu trabalho busca transformar processos e pessoas para alcançar uma alimentação mais segura, eficiente e de qualidade.',
+    ],
     education: [
       {
         title: 'Pós-graduação em Vigilância Sanitária',
